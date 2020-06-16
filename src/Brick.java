@@ -5,16 +5,21 @@ public class Brick extends Sprite {
 	private boolean broken = false;
 	
 	public Brick(int x, int y) {
-		// TODO: Set x using the parameter
-		// TODO: Set y using the parameter
-		// TODO: Set the width and height of the brick using Settings.BRICK_WIDTH/HEIGHT
+		setX(x);								// TODO: Set x using the parameter>>>>>
+		setY(y);								// TODO: Set y using the parameter>>>>
+		setWidth(Settings.BRICK_WIDTH);
+		setHeight(Settings.BRICK_HEIGHT);		// TODO: Set the width and height of the brick using Settings.BRICK_WIDTH/HEIGHT>>>>>>
 	}
 
 	public boolean isBroken() {
-		return false;	// TODO: Return the correct variable
+		if(broken) {
+			return true;
+		}else {
+		return false;
+		}							// TODO: Return the correct variable>>>>>>>UNSURE ABOUT THIS
 	}
 	public void setBroken(boolean b) {
-		// TODO: Set the broken variable using the parameter given
+		broken = b;					// TODO: Set the broken variable using the parameter given>>>>>
 	}
 	
 	public void paint(Graphics g) {
