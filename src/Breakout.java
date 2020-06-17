@@ -7,20 +7,20 @@ public class Breakout extends JFrame{
 	static final long serialVersionUID = 1L;
 	
 	private BreakoutPanel panel;
-	
+	//breakout method
 	public Breakout() {
-		setTitle(Settings.WINDOW_NAME);	// TODO: Set the size of the screen (use Settings.WINDOW_WIDTH/HEIGHT)
-		setSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);	// TODO: Set the title
-		setBackground(Color.WHITE);	// TODO: Set the background colour to white
-		setResizable(false);	// TODO: Set resizable to false
-		setVisible(true);	// TODO: Set visible to true
-        setDefaultCloseOperation(EXIT_ON_CLOSE);			//TO DO COMPLETED>>>
-        panel = new BreakoutPanel(this);			//UUUUUUUUHHHHHHHHHH???????
+		setTitle(Settings.WINDOW_NAME);							// sets size of screen to variable stored in settings
+		setSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);	// ''title''
+		setBackground(Color.WHITE);								// sets background to white
+		setResizable(false);									// Set resizable to false
+		setVisible(true);										// Set visible to true
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        panel = new BreakoutPanel(this);
         add(panel);
 	}
-
+	//main
 	public static void main(String[] args) {
-		new Breakout();	
+		new Breakout();				//calls breakout method
 	}
 
 }

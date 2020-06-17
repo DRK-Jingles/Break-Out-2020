@@ -21,16 +21,18 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 	private Paddle paddle;
 	private Brick bricks[];
 	
+	//break out panel
 	public BreakoutPanel(Breakout game) {		
 		addKeyListener(this);
 		setFocusable(true);		
 		Timer timer = new Timer(5, this);
 		timer.start();		
-		ball = new Ball();			// TODO: Create a new ball object and assign it to the appropriate variable >>
-		paddle = new Paddle();		// TODO: Create a new paddle object and assign it to the appropriate variable >>
-		bricks = new Brick[Settings.TOTAL_BRICKS];	// TODO: Create a new bricks array (Use Settings.TOTAL_BRICKS) >>
-		createBricks();				// TODO: Call the createBricks() method >>
-	}	
+		ball = new Ball();			// creates a new ball object store as variable
+		paddle = new Paddle();		// creates a new paddle object store as variable
+		bricks = new Brick[Settings.TOTAL_BRICKS];	// creates a new bricks array using size variable in settings
+		createBricks();				// call create bricks method
+	}
+	//create bricks method
 	private void createBricks() {
 		int counter = 0;
 		int x_space = 0;
@@ -45,30 +47,36 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 			y_space = 0;
 		}
 	}	
+	//paint bricks method
 	private void paintBricks(Graphics g) {
 		for(int i = (bricks.length-1); i >= 0; i--) {
-			bricks[i].paint(g);						// TODO: Loop through the bricks and call the paint() method>>
+			bricks[i].paint(g);						// loops through the bricks array and paints each one
 		}
-	}	
+	}
+	//update method
 	private void update() {
 		if(gameRunning) {
-			ball.update();							// TODO: Update the ball and paddle>>>
-			paddle.update();
-			collisions();
-			repaint();
+			ball.update();							// updates the ball
+			paddle.update();						//updates the paddle
+			collisions();							//calls collisions method to check for collisions
+			repaint();								//repaints objects
 		}
-	}	
+	}
+	//game over method
 	private void gameOver() {
-		this.screenMessage = "Game Over";				// TODO: Set screen message>>>
-		stopGame();
-	}	
+		this.screenMessage = "Game Over";				// set screen message to game over
+		stopGame();										//stop game
+	}
+	//game won method
 	private void gameWon() {
-		this.screenMessage = "Congrats You WON!!";		// TODO: Set screen message>>>
-		stopGame();
-	}	
+		this.screenMessage = "Congrats You WON!!";		// set screen message to winner
+		stopGame();										//stop game
+	}
+	//stop game method
 	private void stopGame() {
 		gameRunning = false;
-	}	
+	}
+	//collisions method
 	private void collisions() {
 		// Check for loss
 		if(ball.y > 450) {
@@ -134,12 +142,13 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 	@Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        ball.paint(g);
+        ball.paint(g);			//paint ball, paddle and bricks
         paddle.paint(g);
         paintBricks(g);
         g.setFont(new Font("Arial", Font.BOLD, 18));
-    	g.drawString("Lives Left: " + this.livesLeft, Settings.LIVES_POSITION_X, Settings.LIVES_POSITION_Y);
-        // Draw screen message
+    	g.drawString("Lives Left: " + this.livesLeft, Settings.LIVES_POSITION_X, Settings.LIVES_POSITION_Y);	//display lives left in upper left corner
+        
+    	// Draw screen message if has been changed
         if(screenMessage != null) {
         	g.setFont(new Font("Arial", Font.BOLD, 18));
         	int messageWidth = g.getFontMetrics().stringWidth(screenMessage);
@@ -152,13 +161,13 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 			paddle.setXVelocity(-1);
 		}else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			paddle.setXVelocity(1);
-		}		// TODO: Set the velocity of the paddle depending on whether the player is pressing left or right>>>>>>
+		}		// Sets the velocity of the paddle depending on whether the player is pressing left or right
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			paddle.setXVelocity(0);
-		}// TODO: Set the velocity of the paddle after the player has released the keys>>>>>>>>
+		}	// sets the velocity of the paddle back to zero after the player has released the keys
 	}
 	@Override
 	public void keyTyped(KeyEvent arg0) {		

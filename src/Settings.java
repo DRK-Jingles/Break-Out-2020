@@ -1,4 +1,5 @@
-
+/*just a class to store settings for the breakout game
+modifying values will resize frame and game elements as well as positions*/
 public class Settings {
 	public static final String WINDOW_NAME = "Breakout";
 	public static final int WINDOW_WIDTH = 400;
